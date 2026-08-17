@@ -13,7 +13,13 @@ const app = express();
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://attendance-system-54mz.onrender.com',
+    process.env.CLIENT_URL
+  ].filter(Boolean)
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

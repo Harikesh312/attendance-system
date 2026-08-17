@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+const baseURL = import.meta.env.VITE_API_URL || 
+  (window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000/api' 
+    : 'https://attendance-system-backend-m1gi.onrender.com/api');
+
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL,
 });
 
 // Add a request interceptor
