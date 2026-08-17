@@ -46,7 +46,16 @@ const studentSignup = async (req, res, next) => {
     });
 
     if (student) {
-      res.status(201).json({ message: 'Signup successful' });
+      res.status(201).json({ 
+        message: 'Signup successful',
+        token: generateToken(student._id, 'student'),
+        student: {
+          id: student._id,
+          name: student.name,
+          rollNo: student.rollNo,
+          email: student.email
+        }
+      });
     } else {
       res.status(400);
       throw new Error('Invalid student data');

@@ -19,9 +19,12 @@ const Navbar = () => {
       <div className="nav-links">
         {user ? (
           <>
-            <span style={{ color: 'var(--text-secondary)' }}>
-              {user.role === 'admin' ? 'Admin Portal' : 'Student Portal'}
-            </span>
+            <Link 
+              to={user.role === 'admin' ? '/admin/dashboard' : '/student/scan'} 
+              style={{ color: 'var(--accent-primary)', fontWeight: 'bold', marginRight: '1rem' }}
+            >
+              Go to {user.role === 'admin' ? 'Admin Portal' : 'Student Portal'}
+            </Link>
             <button className="btn btn-danger" style={{ width: 'auto', padding: '0.5rem 1rem' }} onClick={handleLogout}>
               Logout
             </button>

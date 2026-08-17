@@ -16,7 +16,12 @@ const StudentScan = () => {
   useEffect(() => {
     if (isScanning) {
       const scanner = new Html5QrcodeScanner('reader', {
-        qrbox: { width: 250, height: 250 },
+        qrbox: (viewfinderWidth, viewfinderHeight) => {
+          return { 
+            width: viewfinderWidth * 0.8, 
+            height: viewfinderHeight * 0.8 
+          };
+        },
         fps: 10,
       });
 

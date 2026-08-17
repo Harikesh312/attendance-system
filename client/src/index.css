@@ -250,16 +250,19 @@ tr:hover {
 
 #reader {
   width: 100%;
-  max-width: 500px;
+  max-width: 700px; /* Reduced width slightly */
   margin: 0 auto;
   border: 2px solid var(--border-color) !important;
   border-radius: 12px;
   overflow: hidden;
-  background: var(--bg-secondary);
+  background: #000;
 }
 
 #reader video {
   border-radius: 10px;
+  width: 100% !important;
+  height: 220px !important; /* Significantly reduced height */
+  object-fit: cover !important; /* Crop top/bottom safely without squishing */
 }
 
 /* Responsive adjustments for small screens */
@@ -282,7 +285,58 @@ tr:hover {
   #reader {
     width: 100% !important;
   }
-  #reader * {
-    max-width: 100%;
-  }
+}
+
+/* Loading Spinner */
+.spinner {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Password Input Wrapper */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper .form-control {
+  padding-right: 2.5rem;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: var(--text-primary);
 }
